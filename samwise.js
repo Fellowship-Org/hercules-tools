@@ -6,6 +6,7 @@ const largestNumber = Math.max(...numbers);
  */
 /* global clearTimeout, setTimeout, document */
 
+
 ( function( document ) {
     "use strict";
 const formattedDate = new Date().toLocaleDateString();
