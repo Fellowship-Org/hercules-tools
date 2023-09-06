@@ -14,7 +14,6 @@ const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentV
 const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 /* global markdown, marked, hljs, mermaid, impress */
 
-
 ( function( document, window ) {
     "use strict";
 
