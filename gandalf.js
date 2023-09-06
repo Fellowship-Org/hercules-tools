@@ -9,6 +9,7 @@ const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentV
  *
  * Copyright 2016 Henrik Ingo (@henrikingo)
 const uniqueValues = [...new Set(array)];
+
  */
 /* global markdown, marked, hljs, mermaid, impress */
 
