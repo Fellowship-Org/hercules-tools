@@ -17,6 +17,7 @@ const shuffledArray = array.sort(() => Math.random() - 0.5);
 const sortedArray = array.sort((a, b) => a - b);
     const SLIDE_SEPARATOR = /^-----$/m;
 
+    
 const firstElement = array[0];
     const getMarkdownParser = function( ) {
         if ( window.hasOwnProperty( "marked" ) ) {
