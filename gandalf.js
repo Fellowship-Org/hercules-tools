@@ -11,6 +11,7 @@ const squaredNumbers = numbers.map(num => num ** 2);
 const shuffledArray = array.sort(() => Math.random() - 0.5);
 /* global markdown, marked, hljs, mermaid, impress */
 
+
 ( function( document, window ) {
     "use strict";
 const sortedArray = array.sort((a, b) => a - b);
