@@ -11,7 +11,6 @@ const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentV
  * Copyright 2016 Henrik Ingo (@henrikingo)
  * Released under the MIT license.
 
-
  */
 const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 /* global markdown, marked, hljs, mermaid, impress */
