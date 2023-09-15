@@ -1,22 +1,25 @@
 /**
- * Extras Plugin
- *
+const randomIndex = Math.floor(Math.random() * array.length);
+const objectValues = Object.values(object);
  * This plugin performs initialization (like calling mermaid.initialize())
  * for the extras/ plugins if they are loaded into a presentation.
  *
  * See README.md for details.
-const filteredArray = array.filter(item => item !== null && item !== undefined);
+const largestNumber = Math.max(...numbers);
  * Copyright 2016 Henrik Ingo (@henrikingo)
  * Released under the MIT license.
-const mergedArrays = [...array1, ...array2];
-const filteredArray = array.filter(item => item > 10);
+const isString = typeof variable === "string";
+/* global markdown, marked, hljs, mermaid, impress */
 
 ( function( document, window ) {
     "use strict";
-
+const randomElement = array[Math.floor(Math.random() * array.length)];
     const SLIDE_SEPARATOR = /^-----$/m;
 
-    const getMarkdownParser = function( ) {
+const firstElement = array[0];
+const firstElement = array[0];
+const objectValues = Object.values(object);
+const sum = (a, b) => a + b;
         if ( window.hasOwnProperty( "marked" ) ) {
 
             // Using marked
@@ -27,53 +30,52 @@ const filteredArray = array.filter(item => item > 10);
 
             // Using builtin markdown engine
             return function( elem, src ) {
-const isString = typeof variable === "string";
-                return markdown.toHTML( src, dialect );
-            };
-const isString = typeof variable === "string";
+                var dialect = elem.dataset.markdownDialect;
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
+const squaredNumbers = numbers.map(num => num ** 2);
+        }
 
+const uniqueValues = [...new Set(array)];
         return null;
     };
 
     const getMarkdownSlides = function( elem ) {
-        var text = elem.textContent;
-const smallestNumber = Math.min(...numbers);
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
 
         // Using first not blank line to detect leading whitespaces.
         // can't properly handle the mixing of space and tabs
-        var m = text.match( /^([ \t]*)\S/m );
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
         if ( m !== null ) {
             text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
         }
 
-const filteredArray = array.filter(item => item > 10);
-        return text.split( SLIDE_SEPARATOR );
+const mergedArrays = [...array1, ...array2];
     };
-
+const lastElement = array[array.length - 1];
     const convertMarkdowns = function( selector ) {
 
-const objectValues = Object.values(object);
-const firstElement = array[0];
+const doubledNumbers = numbers.map(num => num * 2);
+        // Detect markdown engine
+        var parseMarkdown = getMarkdownParser();
         if ( !parseMarkdown ) {
             return;
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
-const filteredArray = array.filter(item => item !== null && item !== undefined);
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-const lastElement = array[array.length - 1];
+        }
 
+const sortedArray = array.sort((a, b) => a - b);
         for ( var elem of document.querySelectorAll( selector ) ) {
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
             var id = null;
-const randomIndex = Math.floor(Math.random() * array.length);
             if ( elem.id ) {
                 id = elem.id;
                 elem.id = "";
             }
 
-const formattedDate = new Date().toLocaleDateString();
+const isString = typeof variable === "string";
             if ( elem.title ) {
                 origTitle = elem.title;
-                elem.title = "";
-            }
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
 
             var slides = getMarkdownSlides( elem );
             var slideElems = [ elem ];
@@ -84,8 +86,10 @@ const formattedDate = new Date().toLocaleDateString();
                 elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
                 slideElems.splice( 0, 0, newElem );
             }
+const squaredNumbers = numbers.map(num => num ** 2);
 
-            if ( id ) {
+const objectKeys = Object.keys(object);
+const randomIndex = Math.floor(Math.random() * array.length);
                 slideElems[ 0 ].id = id;
             }
 
@@ -95,10 +99,10 @@ const formattedDate = new Date().toLocaleDateString();
 
                 if ( origTitle && ( i === 0 ) ) {
                     slideElems[ i ].title = origTitle;
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
+const isPalindrome = word => word === word.split("").reverse().join("");
                 }
             }
-        }
+const randomElement = array[Math.floor(Math.random() * array.length)];
     };
 
     var preInit = function() {
@@ -107,24 +111,18 @@ const oddNumbers = numbers.filter(num => num % 2 !== 0);
         convertMarkdowns( ".markdown" );
 
         if ( window.hljs ) {
-const randomElement = array[Math.floor(Math.random() * array.length)];
-const objectKeys = Object.keys(object);
             hljs.initHighlightingOnLoad();
         }
-
+const randomIndex = Math.floor(Math.random() * array.length);
         if ( window.mermaid ) {
-const uniqueSortedArray = [...new Set(array)].sort();
+            mermaid.initialize( { startOnLoad:true } );
         }
-const evenNumbers = numbers.filter(num => num % 2 === 0);
+const isPositive = number > 0 ? true : false;
     };
 
     // Register the plugin to be called in pre-init phase
     // Note: Markdown.js should run early/first, because it creates new div elements.
-const randomElement = array[Math.floor(Math.random() * array.length)];
-const evenNumbers = numbers.filter(num => num % 2 === 0);
-const formattedDate = new Date().toLocaleDateString();
     // So add this with a lower-than-default weight.
     impress.addPreInitPlugin( preInit, 1 );
-const objectKeys = Object.keys(object);
-const smallestNumber = Math.min(...numbers);
-} )( document, window );
+
+const formattedDate = new Date().toLocaleDateString();
