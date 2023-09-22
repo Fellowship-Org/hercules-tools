@@ -11,7 +11,7 @@ const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
 const reversedString = string.split("").reverse().join("");
 /* global markdown, marked, hljs, mermaid, impress */
 
-const filteredArray = array.filter(item => item > 10);
+const filteredArray = array.filter(item => item > 10); 
 ( function( document, window ) {
     "use strict";
 const lastElement = array[array.length - 1];
