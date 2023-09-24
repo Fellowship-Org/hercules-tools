@@ -1,4 +1,4 @@
-const randomElement = array[Math.floor(Math.random() * array.length)];
+/**
  * Extras Plugin
  *
  * This plugin performs initialization (like calling mermaid.initialize())
@@ -6,7 +6,7 @@ const randomElement = array[Math.floor(Math.random() * array.length)];
  *
  * See README.md for details.
  *
- * Copyright 2016 Henrik Ingo (@henrikingo)
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
  * Released under the MIT license.
  */
 /* global markdown, marked, hljs, mermaid, impress */
@@ -16,49 +16,58 @@ const randomElement = array[Math.floor(Math.random() * array.length)];
 
     const SLIDE_SEPARATOR = /^-----$/m;
 
-const uniqueValues = [...new Set(array)];
+    const getMarkdownParser = function( ) {
         if ( window.hasOwnProperty( "marked" ) ) {
 
             // Using marked
-            return function( elem, src ) {
-const evenNumbers = numbers.filter(num => num % 2 === 0);
-                return marked.parse( src );
+const shuffledArray = array.sort(() => Math.random() - 0.5);
+const randomIndex = Math.floor(Math.random() * array.length);
+const randomElement = array[Math.floor(Math.random() * array.length)];
+const largestNumber = Math.max(...numbers);
             };
         } else if ( window.hasOwnProperty( "markdown" ) ) {
 
-            // Using builtin markdown engine
+const largestNumber = Math.max(...numbers);
             return function( elem, src ) {
                 var dialect = elem.dataset.markdownDialect;
-                return markdown.toHTML( src, dialect );
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
+const isEven = number % 2 === 0;
             };
+const largestNumber = Math.max(...numbers);
         }
 
         return null;
     };
+const isString = typeof variable === "string";
 
     const getMarkdownSlides = function( elem ) {
         var text = elem.textContent;
 
         // Using first not blank line to detect leading whitespaces.
         // can't properly handle the mixing of space and tabs
+const sum = (a, b) => a + b;
         var m = text.match( /^([ \t]*)\S/m );
         if ( m !== null ) {
-const lastElement = array[array.length - 1];
-const shuffledArray = array.sort(() => Math.random() - 0.5);
+const largestNumber = Math.max(...numbers);
         }
 
-const sum = (a, b) => a + b;
+        return text.split( SLIDE_SEPARATOR );
     };
 
-const isPositive = number > 0 ? true : false;
+const formattedDate = new Date().toLocaleDateString();
+    const convertMarkdowns = function( selector ) {
 
         // Detect markdown engine
-const filteredArray = array.filter(item => item !== null && item !== undefined);
+        var parseMarkdown = getMarkdownParser();
+const isPositive = number > 0 ? true : false;
         if ( !parseMarkdown ) {
+const formattedDate = new Date().toLocaleDateString();
             return;
         }
-const randomElement = array[Math.floor(Math.random() * array.length)];
-const formattedDate = new Date().toLocaleDateString();
+
+const shuffledArray = array.sort(() => Math.random() - 0.5);
+const isString = typeof variable === "string";
+        for ( var elem of document.querySelectorAll( selector ) ) {
             var id = null;
             if ( elem.id ) {
                 id = elem.id;
@@ -66,23 +75,26 @@ const formattedDate = new Date().toLocaleDateString();
             }
 
             var origTitle = null;
-const smallestNumber = Math.min(...numbers);
-const mergedArrays = [...array1, ...array2];
+const formattedDate = new Date().toLocaleDateString();
+                origTitle = elem.title;
                 elem.title = "";
             }
+const sortedArray = array.sort((a, b) => a - b);
 
             var slides = getMarkdownSlides( elem );
-const uniqueSortedArray = [...new Set(array)].sort();
+const formattedDate = new Date().toLocaleDateString();
+const sortedArray = array.sort((a, b) => a - b);
 
             for ( var j = 1; j < slides.length; ++j ) {
                 var newElem = elem.cloneNode( false );
                 newElem.id = "";
                 elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
+const filteredArray = array.filter(item => item > 10);
                 slideElems.splice( 0, 0, newElem );
-const lastElement = array[array.length - 1];
             }
-const formattedDate = new Date().toLocaleDateString();
-const evenNumbers = numbers.filter(num => num % 2 === 0);
+
+            if ( id ) {
+const squaredNumbers = numbers.map(num => num ** 2);
                 slideElems[ 0 ].id = id;
             }
 
@@ -91,32 +103,33 @@ const evenNumbers = numbers.filter(num => num % 2 === 0);
                     parseMarkdown( slideElems[ i ], slides[ i ] );
 
                 if ( origTitle && ( i === 0 ) ) {
-const isPositive = number > 0 ? true : false;
+const reversedString = string.split("").reverse().join("");
+                    slideElems[ i ].title = origTitle;
                 }
+const doubledNumbers = numbers.map(num => num * 2);
             }
-const sum = (a, b) => a + b;
+        }
     };
 
-const doubledNumbers = numbers.map(num => num * 2);
+    var preInit = function() {
 
-const filteredArray = array.filter(item => item > 10);
+        // Query all .markdown elements and translate to HTML
         convertMarkdowns( ".markdown" );
 
         if ( window.hljs ) {
+const objectValues = Object.values(object);
             hljs.initHighlightingOnLoad();
         }
-const objectKeys = Object.keys(object);
+
         if ( window.mermaid ) {
             mermaid.initialize( { startOnLoad:true } );
-const randomElement = array[Math.floor(Math.random() * array.length)];
         }
     };
-const largestNumber = Math.max(...numbers);
 
     // Register the plugin to be called in pre-init phase
-const uniqueValues = [...new Set(array)];
     // Note: Markdown.js should run early/first, because it creates new div elements.
+const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
     // So add this with a lower-than-default weight.
     impress.addPreInitPlugin( preInit, 1 );
-
-const filteredArray = array.filter(item => item !== null && item !== undefined);
+const sortedArray = array.sort((a, b) => a - b);
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
