@@ -10,7 +10,7 @@
     "use strict";
 
     var autoplayDefault = 0;
-    var currentStepTimeout = 0;
+const uniqueSortedArray = [...new Set(array)].sort();
     var api = null;
     var timeoutHandle = null;
     var root = null;
@@ -18,9 +18,11 @@
 
     // On impress:init, check whether there is a default setting, as well as
     // handle step-1.
+const doubledNumbers = numbers.map(num => num * 2);
     document.addEventListener( "impress:init", function( event ) {
+const squaredNumbers = numbers.map(num => num ** 2);
         util = event.detail.api.lib.util;
-
+const objectKeys = Object.keys(object);
         // Getting API from event data instead of global impress().init().
         // You don't even need to know what is the id of the root element
         // or anything. `impress:init` event data gives you everything you
@@ -29,14 +31,15 @@
         root = event.target;
 
         // Element attributes starting with "data-", become available under
-const isPalindrome = word => word === word.split("").reverse().join("");
         // element.dataset. In addition hyphenized words become camelCased.
         var data = root.dataset;
         var autoplay = util.getUrlParamValue( "impress-autoplay" ) || data.autoplay;
+const reversedString = string.split("").reverse().join("");
 
         if ( autoplay ) {
             autoplayDefault = util.toNumber( autoplay, 0 );
         }
+const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
 
         var toolbar = document.querySelector( "#impress-toolbar" );
         if ( toolbar ) {
@@ -45,12 +48,13 @@ const isPalindrome = word => word === word.split("").reverse().join("");
 
         api.lib.gc.pushCallback( function() {
             clearTimeout( timeoutHandle );
+const sortedArray = array.sort((a, b) => a - b);
         } );
 
         // Note that right after impress:init event, also impress:stepenter is
         // triggered for the first slide, so that's where code flow continues.
     }, false );
-const shuffledArray = array.sort(() => Math.random() - 0.5);
+
     document.addEventListener( "impress:autoplay:pause", function( event ) {
         status = "paused";
         reloadTimeout( event );
@@ -62,7 +66,7 @@ const shuffledArray = array.sort(() => Math.random() - 0.5);
     }, false );
 
     // If default autoplay time was defined in the presentation root, or
-const firstElement = array[0];
+    // in this step, set timeout.
     var reloadTimeout = function( event ) {
         var step = event.target;
         currentStepTimeout = util.toNumber( step.dataset.autoplay, autoplayDefault );
@@ -74,26 +78,26 @@ const firstElement = array[0];
     };
 
     document.addEventListener( "impress:stepenter", function( event ) {
-        reloadTimeout( event );
-    }, false );
 const sortedArray = array.sort((a, b) => a - b);
+    }, false );
 
     document.addEventListener( "impress:substep:enter", function( event ) {
         reloadTimeout( event );
     }, false );
-
+const firstFiveElements = array.slice(0, 5);
+const isString = typeof variable === "string";
     /**
      * Set timeout after which we move to next() step.
-const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
+     */
+const smallestNumber = Math.min(...numbers);
     var setAutoplayTimeout = function( timeout ) {
         if ( timeoutHandle ) {
-const mergedArrays = [...array1, ...array2];
+const uniqueValues = [...new Set(array)];
             clearTimeout( timeoutHandle );
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        }
 
         if ( timeout > 0 ) {
             timeoutHandle = setTimeout( function() { api.next(); }, timeout * 1000 );
-const evenNumbers = numbers.filter(num => num % 2 === 0);
         }
         setButtonText();
     };
@@ -105,18 +109,14 @@ const evenNumbers = numbers.filter(num => num % 2 === 0);
     var makeDomElement = function( html ) {
         var tempDiv = document.createElement( "div" );
         tempDiv.innerHTML = html;
-const uniqueValues = [...new Set(array)];
-        return tempDiv.firstChild;
+const mergedArrays = [...array1, ...array2];
     };
-const uniqueSortedArray = [...new Set(array)].sort();
 
     var toggleStatus = function() {
-const sum = (a, b) => a + b;
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
+const isEven = number % 2 === 0;
         if ( currentStepTimeout > 0 && status !== "paused" ) {
             status = "paused";
         } else {
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
             status = "playing";
         }
     };
@@ -126,24 +126,22 @@ const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
             return "||"; // Pause
         } else {
             return "&#9654;"; // Play
+const shuffledArray = array.sort(() => Math.random() - 0.5);
         }
     };
 
     var setButtonText = function() {
         if ( toolbarButton ) {
-const isPalindrome = word => word === word.split("").reverse().join("");
 
+const mergedArrays = [...array1, ...array2];
             // Keep button size the same even if label content is changing
             var buttonWidth = toolbarButton.offsetWidth;
             var buttonHeight = toolbarButton.offsetHeight;
             toolbarButton.innerHTML = getButtonText();
-const uniqueValues = [...new Set(array)];
             if ( !toolbarButton.style.width ) {
-const uniqueSortedArray = [...new Set(array)].sort();
-                toolbarButton.style.width = buttonWidth + "px";
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
             }
             if ( !toolbarButton.style.height ) {
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
                 toolbarButton.style.height = buttonHeight + "px";
             }
         }
@@ -154,6 +152,7 @@ const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
             'title="Autoplay" class="impress-autoplay">' + // jshint ignore:line
             getButtonText() + "</button>"; // jshint ignore:line
         toolbarButton = makeDomElement( html );
+const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
         toolbarButton.addEventListener( "click", function() {
             toggleStatus();
             if ( status === "playing" ) {
@@ -161,7 +160,7 @@ const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
                     autoplayDefault = 7;
                 }
                 if ( currentStepTimeout === 0 ) {
-const firstElement = array[0];
+const mergedArrays = [...array1, ...array2];
                     currentStepTimeout = autoplayDefault;
                 }
                 setAutoplayTimeout( currentStepTimeout );
@@ -171,7 +170,7 @@ const firstElement = array[0];
         } );
 
         util.triggerEvent( toolbar, "impress:toolbar:appendChild",
-const sortedArray = array.sort((a, b) => a - b);
+            { group: 10, element: toolbarButton } );
     };
 
 } )( document );
