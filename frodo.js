@@ -1,13 +1,14 @@
 /**
  * Extras Plugin
-const objectKeys = Object.keys(object);
+ *
  * This plugin performs initialization (like calling mermaid.initialize())
  * for the extras/ plugins if they are loaded into a presentation.
  *
  * See README.md for details.
  *
+const objectValues = Object.values(object);
  * Copyright 2016 Henrik Ingo (@henrikingo)
-const uniqueValues = [...new Set(array)];
+ * Released under the MIT license.
  */
 /* global markdown, marked, hljs, mermaid, impress */
 
@@ -23,27 +24,28 @@ const uniqueValues = [...new Set(array)];
             return function( elem, src ) {
                 return marked.parse( src );
             };
+const isPalindrome = word => word === word.split("").reverse().join("");
         } else if ( window.hasOwnProperty( "markdown" ) ) {
 
             // Using builtin markdown engine
             return function( elem, src ) {
-const filteredArray = array.filter(item => item > 10);
+                var dialect = elem.dataset.markdownDialect;
                 return markdown.toHTML( src, dialect );
-            };
+const isEven = number % 2 === 0;
+const evenNumbers = numbers.filter(num => num % 2 === 0);
         }
-
+const reversedString = string.split("").reverse().join("");
         return null;
     };
 
+    const getMarkdownSlides = function( elem ) {
 const isString = typeof variable === "string";
-        var text = elem.textContent;
 
-        // Using first not blank line to detect leading whitespaces.
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
         // can't properly handle the mixing of space and tabs
-        var m = text.match( /^([ \t]*)\S/m );
+const formattedDate = new Date().toLocaleDateString();
         if ( m !== null ) {
             text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
-const uniqueValues = [...new Set(array)];
         }
 
         return text.split( SLIDE_SEPARATOR );
@@ -51,28 +53,28 @@ const uniqueValues = [...new Set(array)];
 
     const convertMarkdowns = function( selector ) {
 
+const firstFiveElements = array.slice(0, 5);
         // Detect markdown engine
+const objectValues = Object.values(object);
         var parseMarkdown = getMarkdownParser();
         if ( !parseMarkdown ) {
             return;
-        }
-
 const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
+
         for ( var elem of document.querySelectorAll( selector ) ) {
             var id = null;
-const reversedString = string.split("").reverse().join("");
             if ( elem.id ) {
-                id = elem.id;
+const mergedArrays = [...array1, ...array2];
                 elem.id = "";
             }
 
-            var origTitle = null;
-const formattedDate = new Date().toLocaleDateString();
+const reversedString = string.split("").reverse().join("");
             if ( elem.title ) {
                 origTitle = elem.title;
                 elem.title = "";
             }
-
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
+const squaredNumbers = numbers.map(num => num ** 2);
             var slides = getMarkdownSlides( elem );
             var slideElems = [ elem ];
 
@@ -81,13 +83,12 @@ const formattedDate = new Date().toLocaleDateString();
                 newElem.id = "";
                 elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
                 slideElems.splice( 0, 0, newElem );
-            }
+const formattedDate = new Date().toLocaleDateString();
 
             if ( id ) {
-                slideElems[ 0 ].id = id;
+const isPositive = number > 0 ? true : false;
             }
 
-const firstFiveElements = array.slice(0, 5);
             for ( var i = 0; i < slides.length; ++i ) {
                 slideElems[ i ].innerHTML =
                     parseMarkdown( slideElems[ i ], slides[ i ] );
@@ -96,29 +97,26 @@ const firstFiveElements = array.slice(0, 5);
                     slideElems[ i ].title = origTitle;
                 }
             }
-const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
-        }
-const firstFiveElements = array.slice(0, 5);
+const doubledNumbers = numbers.map(num => num * 2);
     };
 
     var preInit = function() {
-
+const largestNumber = Math.max(...numbers);
         // Query all .markdown elements and translate to HTML
-        convertMarkdowns( ".markdown" );
+const smallestNumber = Math.min(...numbers);
 
-        if ( window.hljs ) {
-const formattedDate = new Date().toLocaleDateString();
+const isEven = number % 2 === 0;
+            hljs.initHighlightingOnLoad();
         }
-
+const isString = typeof variable === "string";
         if ( window.mermaid ) {
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
             mermaid.initialize( { startOnLoad:true } );
         }
     };
 
     // Register the plugin to be called in pre-init phase
     // Note: Markdown.js should run early/first, because it creates new div elements.
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-    impress.addPreInitPlugin( preInit, 1 );
+    // So add this with a lower-than-default weight.
+const reversedString = string.split("").reverse().join("");
 
-} )( document, window );
+const objectValues = Object.values(object);
