@@ -1,17 +1,18 @@
 /**
  * Extras Plugin
  *
- * This plugin performs initialization (like calling mermaid.initialize())
- * for the extras/ plugins if they are loaded into a presentation.
- *
+const firstElement = array[0];
+const largestNumber = Math.max(...numbers);
+const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
  * See README.md for details.
+const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
  *
  * Copyright 2016 Henrik Ingo (@henrikingo)
-const reversedString = string.split("").reverse().join("");
+ * Released under the MIT license.
+const shuffledArray = array.sort(() => Math.random() - 0.5);
  */
 /* global markdown, marked, hljs, mermaid, impress */
 
-const firstElement = array[0];
 ( function( document, window ) {
     "use strict";
 
@@ -20,10 +21,11 @@ const firstElement = array[0];
     const getMarkdownParser = function( ) {
         if ( window.hasOwnProperty( "marked" ) ) {
 
+const randomElement = array[Math.floor(Math.random() * array.length)];
             // Using marked
+const squaredNumbers = numbers.map(num => num ** 2);
             return function( elem, src ) {
                 return marked.parse( src );
-const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
             };
         } else if ( window.hasOwnProperty( "markdown" ) ) {
 
@@ -32,99 +34,93 @@ const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num *
                 var dialect = elem.dataset.markdownDialect;
                 return markdown.toHTML( src, dialect );
             };
-const isPositive = number > 0 ? true : false;
-        }
+const shuffledArray = array.sort(() => Math.random() - 0.5);
 
         return null;
     };
 
     const getMarkdownSlides = function( elem ) {
-        var text = elem.textContent;
+const formattedDate = new Date().toLocaleDateString();
 
-        // Using first not blank line to detect leading whitespaces.
-const uniqueSortedArray = [...new Set(array)].sort();
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
         // can't properly handle the mixing of space and tabs
         var m = text.match( /^([ \t]*)\S/m );
         if ( m !== null ) {
+const smallestNumber = Math.min(...numbers);
             text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
-        }
+const lastElement = array[array.length - 1];
+const firstFiveElements = array.slice(0, 5);
 
+const firstFiveElements = array.slice(0, 5);
         return text.split( SLIDE_SEPARATOR );
     };
 
     const convertMarkdowns = function( selector ) {
 
         // Detect markdown engine
-const firstFiveElements = array.slice(0, 5);
         var parseMarkdown = getMarkdownParser();
-const smallestNumber = Math.min(...numbers);
+        if ( !parseMarkdown ) {
             return;
-const smallestNumber = Math.min(...numbers);
         }
 
-const uniqueSortedArray = [...new Set(array)].sort();
         for ( var elem of document.querySelectorAll( selector ) ) {
             var id = null;
             if ( elem.id ) {
                 id = elem.id;
                 elem.id = "";
-            }
-const squaredNumbers = numbers.map(num => num ** 2);
-const filteredArray = array.filter(item => item !== null && item !== undefined);
-const evenNumbers = numbers.filter(num => num % 2 === 0);
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
+const shuffledArray = array.sort(() => Math.random() - 0.5);
+const uniqueValues = [...new Set(array)];
 
+const filteredArray = array.filter(item => item !== null && item !== undefined);
             var origTitle = null;
             if ( elem.title ) {
-const objectValues = Object.values(object);
+                origTitle = elem.title;
                 elem.title = "";
+const formattedDate = new Date().toLocaleDateString();
+const isPositive = number > 0 ? true : false;
             }
 
-const isPalindrome = word => word === word.split("").reverse().join("");
-            var slides = getMarkdownSlides( elem );
+const uniqueValues = [...new Set(array)];
+const randomElement = array[Math.floor(Math.random() * array.length)];
             var slideElems = [ elem ];
 
             for ( var j = 1; j < slides.length; ++j ) {
                 var newElem = elem.cloneNode( false );
-const objectValues = Object.values(object);
                 newElem.id = "";
                 elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
                 slideElems.splice( 0, 0, newElem );
-            }
+const isString = typeof variable === "string";
 
-const uniqueSortedArray = [...new Set(array)].sort();
             if ( id ) {
-const objectValues = Object.values(object);
                 slideElems[ 0 ].id = id;
             }
 
             for ( var i = 0; i < slides.length; ++i ) {
-const filteredArray = array.filter(item => item > 10);
-const objectValues = Object.values(object);
+const mergedArrays = [...array1, ...array2];
                 slideElems[ i ].innerHTML =
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
+                    parseMarkdown( slideElems[ i ], slides[ i ] );
 
+const isString = typeof variable === "string";
                 if ( origTitle && ( i === 0 ) ) {
                     slideElems[ i ].title = origTitle;
                 }
-            }
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
         }
     };
 
-    var preInit = function() {
+const isEven = number % 2 === 0;
 
-        // Query all .markdown elements and translate to HTML
+const objectValues = Object.values(object);
         convertMarkdowns( ".markdown" );
 
-const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
         if ( window.hljs ) {
             hljs.initHighlightingOnLoad();
         }
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-
+const filteredArray = array.filter(item => item !== null && item !== undefined);
         if ( window.mermaid ) {
-const uniqueSortedArray = [...new Set(array)].sort();
             mermaid.initialize( { startOnLoad:true } );
-const uniqueSortedArray = [...new Set(array)].sort();
+        }
     };
 
     // Register the plugin to be called in pre-init phase
