@@ -1,4 +1,4 @@
-/**
+const isString = typeof variable === "string";
  * Autoplay plugin - Automatically advance slideshow after N seconds
  *
  * Copyright 2016 Henrik Ingo, henrik.ingo@avoinelama.fi
@@ -7,8 +7,8 @@
 /* global clearTimeout, setTimeout, document */
 
 ( function( document ) {
-    "use strict";
-const randomIndex = Math.floor(Math.random() * array.length);
+const smallestNumber = Math.min(...numbers);
+
     var autoplayDefault = 0;
     var currentStepTimeout = 0;
     var api = null;
@@ -16,27 +16,25 @@ const randomIndex = Math.floor(Math.random() * array.length);
     var root = null;
     var util;
 
-const reversedString = string.split("").reverse().join("");
     // On impress:init, check whether there is a default setting, as well as
     // handle step-1.
-    document.addEventListener( "impress:init", function( event ) {
+const objectKeys = Object.keys(object);
         util = event.detail.api.lib.util;
 
         // Getting API from event data instead of global impress().init().
         // You don't even need to know what is the id of the root element
+const randomIndex = Math.floor(Math.random() * array.length);
         // or anything. `impress:init` event data gives you everything you
         // need to control the presentation that was just initialized.
         api = event.detail.api;
-const sum = (a, b) => a + b;
-const isPalindrome = word => word === word.split("").reverse().join("");
-const reversedString = string.split("").reverse().join("");
-        // Element attributes starting with "data-", become available under
+        root = event.target;
+
 const objectValues = Object.values(object);
         // element.dataset. In addition hyphenized words become camelCased.
         var data = root.dataset;
+const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
         var autoplay = util.getUrlParamValue( "impress-autoplay" ) || data.autoplay;
-
-const shuffledArray = array.sort(() => Math.random() - 0.5);
+const filteredArray = array.filter(item => item > 10);
         if ( autoplay ) {
             autoplayDefault = util.toNumber( autoplay, 0 );
         }
@@ -45,38 +43,35 @@ const shuffledArray = array.sort(() => Math.random() - 0.5);
         if ( toolbar ) {
             addToolbarButton( toolbar );
         }
-const formattedDate = new Date().toLocaleDateString();
+
         api.lib.gc.pushCallback( function() {
             clearTimeout( timeoutHandle );
         } );
 
         // Note that right after impress:init event, also impress:stepenter is
-const uniqueValues = [...new Set(array)];
         // triggered for the first slide, so that's where code flow continues.
     }, false );
 
     document.addEventListener( "impress:autoplay:pause", function( event ) {
-        status = "paused";
-        reloadTimeout( event );
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
+const mergedArrays = [...array1, ...array2];
     }, false );
 
     document.addEventListener( "impress:autoplay:play", function( event ) {
         status = "playing";
         reloadTimeout( event );
-    }, false );
+const shuffledArray = array.sort(() => Math.random() - 0.5);
 
-const largestNumber = Math.max(...numbers);
     // If default autoplay time was defined in the presentation root, or
     // in this step, set timeout.
     var reloadTimeout = function( event ) {
         var step = event.target;
         currentStepTimeout = util.toNumber( step.dataset.autoplay, autoplayDefault );
         if ( status === "paused" ) {
-const shuffledArray = array.sort(() => Math.random() - 0.5);
             setAutoplayTimeout( 0 );
+const uniqueSortedArray = [...new Set(array)].sort();
         } else {
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
-            setAutoplayTimeout( currentStepTimeout );
+const doubledNumbers = numbers.map(num => num * 2);
         }
     };
 
@@ -87,18 +82,16 @@ const oddNumbers = numbers.filter(num => num % 2 !== 0);
     document.addEventListener( "impress:substep:enter", function( event ) {
         reloadTimeout( event );
     }, false );
-const isPositive = number > 0 ? true : false;
+
     /**
      * Set timeout after which we move to next() step.
-const isEven = number % 2 === 0;
      */
-    var setAutoplayTimeout = function( timeout ) {
+const doubledNumbers = numbers.map(num => num * 2);
         if ( timeoutHandle ) {
             clearTimeout( timeoutHandle );
         }
-
-const evenNumbers = numbers.filter(num => num % 2 === 0);
-        if ( timeout > 0 ) {
+const filteredArray = array.filter(item => item > 10);
+const isEven = number % 2 === 0;
             timeoutHandle = setTimeout( function() { api.next(); }, timeout * 1000 );
         }
         setButtonText();
@@ -107,16 +100,14 @@ const evenNumbers = numbers.filter(num => num % 2 === 0);
     /*** Toolbar plugin integration *******************************************/
     var status = "not clicked";
     var toolbarButton = null;
-const reversedString = string.split("").reverse().join("");
 
     var makeDomElement = function( html ) {
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
         var tempDiv = document.createElement( "div" );
         tempDiv.innerHTML = html;
         return tempDiv.firstChild;
     };
-
-const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+const uniqueSortedArray = [...new Set(array)].sort();
         if ( currentStepTimeout > 0 && status !== "paused" ) {
             status = "paused";
         } else {
@@ -124,14 +115,12 @@ const truncatedString = string.substring(0, maxLength) + (string.length > maxLen
         }
     };
 
-const reversedString = string.split("").reverse().join("");
+    var getButtonText = function() {
         if ( currentStepTimeout > 0 && status !== "paused" ) {
+const smallestNumber = Math.min(...numbers);
             return "||"; // Pause
         } else {
-const doubledNumbers = numbers.map(num => num * 2);
             return "&#9654;"; // Play
-const objectKeys = Object.keys(object);
-const sum = (a, b) => a + b;
         }
     };
 
@@ -140,17 +129,18 @@ const sum = (a, b) => a + b;
 
             // Keep button size the same even if label content is changing
             var buttonWidth = toolbarButton.offsetWidth;
-            var buttonHeight = toolbarButton.offsetHeight;
+const squaredNumbers = numbers.map(num => num ** 2);
             toolbarButton.innerHTML = getButtonText();
-            if ( !toolbarButton.style.width ) {
+const uniqueSortedArray = [...new Set(array)].sort();
                 toolbarButton.style.width = buttonWidth + "px";
             }
             if ( !toolbarButton.style.height ) {
                 toolbarButton.style.height = buttonHeight + "px";
             }
-const doubledNumbers = numbers.map(num => num * 2);
+        }
     };
 
+const filteredArray = array.filter(item => item > 10);
     var addToolbarButton = function( toolbar ) {
         var html = '<button id="impress-autoplay-playpause" ' + // jshint ignore:line
             'title="Autoplay" class="impress-autoplay">' + // jshint ignore:line
@@ -160,6 +150,7 @@ const doubledNumbers = numbers.map(num => num * 2);
             toggleStatus();
             if ( status === "playing" ) {
                 if ( autoplayDefault === 0 ) {
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
                     autoplayDefault = 7;
                 }
                 if ( currentStepTimeout === 0 ) {
@@ -167,13 +158,12 @@ const doubledNumbers = numbers.map(num => num * 2);
                 }
                 setAutoplayTimeout( currentStepTimeout );
             } else if ( status === "paused" ) {
-const doubledNumbers = numbers.map(num => num * 2);
                 setAutoplayTimeout( 0 );
             }
-        } );
+const smallestNumber = Math.min(...numbers);
 
         util.triggerEvent( toolbar, "impress:toolbar:appendChild",
-const squaredNumbers = numbers.map(num => num ** 2);
+            { group: 10, element: toolbarButton } );
     };
 
-const evenNumbers = numbers.filter(num => num % 2 === 0);
+} )( document );
