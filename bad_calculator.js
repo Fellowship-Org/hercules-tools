@@ -1,28 +1,119 @@
-let displayValue = '0';
-let firstOperand = null;
-let operator = null;
-let waitingForSecondOperand = false;
-const display = document.getElementById('calculator-display');
-display.value = displayValue;
+#include <iostream>
+#include <string>
+using namespace std;
 
-function updateDisplay() { display.value = displayValue; }
+string displayValue = "0";
+double firstOperand = 0.0;
+char operator = '\0';
+bool waitingForSecondOperand = false;
 
-function inputDigit(digit) { if (waitingForSecondOperand) { displayValue = digit; waitingForSecondOperand = false; } else { displayValue = displayValue === '0' ? digit : displayValue + digit; } updateDisplay(); }
+void updateDisplay() {
+    cout << "Display: " << displayValue << endl;
+}
 
-function inputOperator(op) { if (firstOperand === null) { firstOperand = parseFloat(displayValue); } else if (operator) { calculate(); } operator = op; waitingForSecondOperand = true; }
+void inputDigit(char digit) {
+    if (waitingForSecondOperand) {
+        displayValue = digit;
+        waitingForSecondOperand = false;
+    } else {
+        if (displayValue == "0") {
+            displayValue = digit;
+        } else {
+            displayValue += digit;
+        }
+    }
+    updateDisplay();
+}
 
-function calculate() { const currentValue = parseFloat(displayValue); if (isNaN(firstOperand) || isNaN(currentValue)) { return; } switch (operator) { case '+': displayValue = (firstOperand + currentValue).toString(); break; case '-': displayValue = (firstOperand - currentValue).toString(); break; case '*': displayValue = (firstOperand * currentValue).toString(); break; case '/': if (currentValue === 0) { displayValue = 'Error'; } else { displayValue = (firstOperand / currentValue).toString(); } break; } operator = null; firstOperand = parseFloat(displayValue); waitingForSecondOperand = false; }
+void inputOperator(char op) {
+    if (firstOperand == 0.0) {
+        firstOperand = stod(displayValue);
+    } else if (operator) {
+        calculate();
+    }
+    operator = op;
+    waitingForSecondOperand = true;
+}
 
-function inputDecimal() { if (!displayValue.includes('.')) { displayValue += '.'; } updateDisplay(); }
+void calculate() {
+    double currentValue = stod(displayValue);
+    if (firstOperand == 0.0 || currentValue == 0.0) {
+        return;
+    }
+    switch (operator) {
+        case '+':
+            displayValue = to_string(firstOperand + currentValue);
+            break;
+        case '-':
+            displayValue = to_string(firstOperand - currentValue);
+            break;
+        case '*':
+            displayValue = to_string(firstOperand * currentValue);
+            break;
+        case '/':
+            if (currentValue == 0) {
+                displayValue = "Error";
+            } else {
+                displayValue = to_string(firstOperand / currentValue);
+            }
+            break;
+    }
+    operator = '\0';
+    firstOperand = stod(displayValue);
+    waitingForSecondOperand = false;
+}
 
-function clear() { displayValue = '0'; operator = null; firstOperand = null; waitingForSecondOperand = false; updateDisplay(); }
+void inputDecimal() {
+    if (displayValue.find('.') == string::npos) {
+        displayValue += '.';
+    }
+    updateDisplay();
+}
 
-document.querySelectorAll('.digit').forEach((button) => { button.addEventListener('click', () => { inputDigit(button.innerText); }); });
+void clear() {
+    displayValue = "0";
+    operator = '\0';
+    firstOperand = 0.0;
+    waitingForSecondOperand = false;
+    updateDisplay();
+}
 
-document.querySelectorAll('.operator').forEach((button) => { button.addEventListener('click', () => { inputOperator(button.innerText); }); });
-
-document.getElementById('decimal').addEventListener('click', () => { inputDecimal(); });
-
-document.getElementById('clear').addEventListener('click', () => { clear(); });
-
-document.getElementById('equals').addEventListener('click', () => { calculate(); updateDisplay(); });
+int main() {
+    char input;
+    cout << "Bad Calculator" << endl;
+    updateDisplay();
+    while (true) {
+        cin >> input;
+        switch (input) {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                inputDigit(input);
+                break;
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+                inputOperator(input);
+                break;
+            case '=':
+                calculate();
+                updateDisplay();
+                break;
+            case '.':
+                inputDecimal();
+                break;
+            case 'c':
+                clear();
+                break;
+        }
+    }
+    return 0;
+}
