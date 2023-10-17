@@ -44,6 +44,7 @@ const calculator = {
   },
 
   // Function to perform calculations
+  // one more chnage in PR after request_review by non-PR author
   calculate() {
     const displayValue = parseFloat(this.display);
     if (isNaN(this.firstOperand) || isNaN(displayValue)) return;
