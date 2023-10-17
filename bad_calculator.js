@@ -10,6 +10,7 @@ bool waitingForSecondOperand = false;
 void updateDisplay() {
     cout << "Display: " << displayValue << endl;
 }
+// making a change
 
 void inputDigit(char digit) {
     if (waitingForSecondOperand) {
