@@ -8,28 +8,18 @@ jobs:
     steps:
       - checkout
 
-      # Restore dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-
+      # Install dependencies
       - run:
           name: Install Dependencies
           command: npm install
-
-      - save_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
 
       # Run your build steps...
 
       # Save artifacts to workspace
       - persist_to_workspace:
-          root: /workspace
+          root: .
           paths:
-            - ./path/to/artifact1
-            - ./path/to/artifact2
+            - ./dist  # Assuming your build output is in a 'dist' directory
 
   test:
     docker:
@@ -39,17 +29,13 @@ jobs:
       - checkout
 
       # Restore dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-
       - run:
           name: Install Dependencies
           command: npm install
 
-      # Run tests using the artifacts from the workspace
+      # Attach workspace to access artifacts
       - attach_workspace:
-          at: /workspace
+          at: .
 
       # Run your test steps using the artifacts from the workspace...
 
