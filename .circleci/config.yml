@@ -22,6 +22,15 @@ jobs:
           paths:
             - ./node_modules
 
+      # Run your build steps...
+
+      # Save artifacts to workspace
+      - persist_to_workspace:
+          root: /workspace
+          paths:
+            - ./path/to/artifact1
+            - ./path/to/artifact2
+
   test:
     docker:
       - image: circleci/node:14.17
@@ -38,19 +47,21 @@ jobs:
           name: Install Dependencies
           command: npm install
 
-      - save_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
+      # Run tests using the artifacts from the workspace
+      - attach_workspace:
+          at: /workspace
 
-      # Run tests
-      - run:
-          name: Run Tests
-          command: npm test
+      # Run your test steps using the artifacts from the workspace...
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build
-      - test
+      - build:
+          filters:
+            branches:
+              only:
+                - main
+      - test:
+          requires:
+            - build
