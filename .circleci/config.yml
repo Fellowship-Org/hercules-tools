@@ -13,8 +13,11 @@ jobs:
           name: Install Dependencies
           command: npm install
 
-      # Run your build steps...
-      
+      # Ensure ./dist directory exists
+      - run:
+          name: Create Dist Directory
+          command: mkdir -p ./dist
+
       # Create a dummy artifact (text file) for example
       - run:
           name: Create Dummy Artifact
