@@ -13,21 +13,22 @@ jobs:
           name: Install Dependencies
           command: npm install
 
-      # Ensure ./dist directory exists
+      # Create artifacts in /tmp
       - run:
-          name: Create Dist Directory
-          command: mkdir -p ./dist
+          name: Create Artifacts
+          command: |
+            echo "Dummy Artifact Content" > /tmp/dummy.txt
+            mkdir /tmp/artifacts
+            echo "Additional Artifact Content" > /tmp/artifacts/extra.txt
 
-      # Create a dummy artifact (text file) for example
-      - run:
-          name: Create Dummy Artifact
-          command: echo "Dummy Artifact Content" > ./dist/dummy.txt
+      # Store artifacts
+      - store_artifacts:
+          path: /tmp/dummy.txt
+          destination: artifacts
 
-      # Save artifacts to workspace
-      - persist_to_workspace:
-          root: .
-          paths:
-            - ./dist  # Assuming your build output is in a 'dist' directory
+      - store_artifacts:
+          path: /tmp/artifacts
+          destination: artifacts
 
   test:
     docker:
@@ -36,11 +37,6 @@ jobs:
     steps:
       - checkout
 
-      # Restore dependencies
-      - run:
-          name: Install Dependencies
-          command: npm install
-
       # Attach workspace to access artifacts
       - attach_workspace:
           at: .
@@ -48,7 +44,11 @@ jobs:
       # Run your test steps using the artifacts from the workspace...
       - run:
           name: Display Dummy Artifact Content
-          command: cat ./dist/dummy.txt
+          command: cat ./artifacts/dummy.txt
+
+      - run:
+          name: Display Additional Artifact Content
+          command: cat ./artifacts/extra.txt
 
 workflows:
   version: 2
