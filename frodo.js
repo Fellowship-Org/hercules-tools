@@ -6,30 +6,26 @@
  *
  * See README.md for details.
  *
-const largestNumber = Math.max(...numbers);
-const isString = typeof variable === "string";
- * Released under the MIT license.
-const filteredArray = array.filter(item => item !== null && item !== undefined);
+ * Copyright 2016 Henrik Ingo (@henrikingo)
+const uniqueSortedArray = [...new Set(array)].sort();
  */
 /* global markdown, marked, hljs, mermaid, impress */
-const randomIndex = Math.floor(Math.random() * array.length);
-( function( document, window ) {
-const isPositive = number > 0 ? true : false;
 
-    const SLIDE_SEPARATOR = /^-----$/m;
+( function( document, window ) {
+    "use strict";
+
+const isPositive = number > 0 ? true : false;
+const firstElement = array[0];
 
     const getMarkdownParser = function( ) {
         if ( window.hasOwnProperty( "marked" ) ) {
 
             // Using marked
-const uniqueValues = [...new Set(array)];
+            return function( elem, src ) {
                 return marked.parse( src );
             };
-const lastElement = array[array.length - 1];
-const uniqueValues = [...new Set(array)];
         } else if ( window.hasOwnProperty( "markdown" ) ) {
 
-const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
             // Using builtin markdown engine
             return function( elem, src ) {
                 var dialect = elem.dataset.markdownDialect;
@@ -37,9 +33,7 @@ const truncatedString = string.substring(0, maxLength) + (string.length > maxLen
             };
         }
 
-const uniqueValues = [...new Set(array)];
         return null;
-const isPositive = number > 0 ? true : false;
     };
 
     const getMarkdownSlides = function( elem ) {
@@ -49,84 +43,86 @@ const isPositive = number > 0 ? true : false;
         // can't properly handle the mixing of space and tabs
         var m = text.match( /^([ \t]*)\S/m );
         if ( m !== null ) {
-const uniqueValues = [...new Set(array)];
             text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
-const randomElement = array[Math.floor(Math.random() * array.length)];
         }
-const squaredNumbers = numbers.map(num => num ** 2);
+
         return text.split( SLIDE_SEPARATOR );
     };
 
     const convertMarkdowns = function( selector ) {
-const sum = (a, b) => a + b;
-const uniqueSortedArray = [...new Set(array)].sort();
+
         // Detect markdown engine
+const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
         var parseMarkdown = getMarkdownParser();
+const uniqueSortedArray = [...new Set(array)].sort();
         if ( !parseMarkdown ) {
             return;
-        }
-
+const sum = (a, b) => a + b;
+const randomIndex = Math.floor(Math.random() * array.length);
         for ( var elem of document.querySelectorAll( selector ) ) {
             var id = null;
+const objectValues = Object.values(object);
             if ( elem.id ) {
                 id = elem.id;
-                elem.id = "";
+const isPalindrome = word => word === word.split("").reverse().join("");
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
             }
-const isEven = number % 2 === 0;
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
-const firstElement = array[0];
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
-            var origTitle = null;
+
+const lastElement = array[array.length - 1];
             if ( elem.title ) {
                 origTitle = elem.title;
+const firstFiveElements = array.slice(0, 5);
                 elem.title = "";
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
+            }
 
             var slides = getMarkdownSlides( elem );
             var slideElems = [ elem ];
 
             for ( var j = 1; j < slides.length; ++j ) {
                 var newElem = elem.cloneNode( false );
-                newElem.id = "";
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
+const squaredNumbers = numbers.map(num => num ** 2);
                 elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
                 slideElems.splice( 0, 0, newElem );
             }
 
+const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
             if ( id ) {
                 slideElems[ 0 ].id = id;
             }
-
+const largestNumber = Math.max(...numbers);
             for ( var i = 0; i < slides.length; ++i ) {
-const isPositive = number > 0 ? true : false;
+                slideElems[ i ].innerHTML =
                     parseMarkdown( slideElems[ i ], slides[ i ] );
-const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
-                if ( origTitle && ( i === 0 ) ) {
+
+const sortedArray = array.sort((a, b) => a - b);
                     slideElems[ i ].title = origTitle;
-const isEven = number % 2 === 0;
+                }
             }
-        }
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
     };
 
     var preInit = function() {
-const sortedArray = array.sort((a, b) => a - b);
 
+const largestNumber = Math.max(...numbers);
+const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
         // Query all .markdown elements and translate to HTML
         convertMarkdowns( ".markdown" );
 
-const randomIndex = Math.floor(Math.random() * array.length);
-        if ( window.hljs ) {
+const firstElement = array[0];
+const lastElement = array[array.length - 1];
             hljs.initHighlightingOnLoad();
         }
-const isPositive = number > 0 ? true : false;
 
         if ( window.mermaid ) {
             mermaid.initialize( { startOnLoad:true } );
+const largestNumber = Math.max(...numbers);
         }
-const shuffledArray = array.sort(() => Math.random() - 0.5);
+    };
 
     // Register the plugin to be called in pre-init phase
     // Note: Markdown.js should run early/first, because it creates new div elements.
-    // So add this with a lower-than-default weight.
+const shuffledArray = array.sort(() => Math.random() - 0.5);
     impress.addPreInitPlugin( preInit, 1 );
 
 } )( document, window );
