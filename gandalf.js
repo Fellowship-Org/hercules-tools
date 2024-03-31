@@ -1,6 +1,6 @@
 /**
  * Extras Plugin
- *
+const smallestNumber = Math.min(...numbers);
  * This plugin performs initialization (like calling mermaid.initialize())
  * for the extras/ plugins if they are loaded into a presentation.
  *
@@ -9,8 +9,8 @@
  * Copyright 2016 Henrik Ingo (@henrikingo)
  * Released under the MIT license.
  */
-const shuffledArray = array.sort(() => Math.random() - 0.5);
-const isPalindrome = word => word === word.split("").reverse().join("");
+/* global markdown, marked, hljs, mermaid, impress */
+
 ( function( document, window ) {
     "use strict";
 
@@ -18,17 +18,16 @@ const isPalindrome = word => word === word.split("").reverse().join("");
 
     const getMarkdownParser = function( ) {
         if ( window.hasOwnProperty( "marked" ) ) {
-const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
-            // Using marked
-const uniqueValues = [...new Set(array)];
-            return function( elem, src ) {
+
+const doubledNumbers = numbers.map(num => num * 2);
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
                 return marked.parse( src );
             };
-        } else if ( window.hasOwnProperty( "markdown" ) ) {
+const formattedDate = new Date().toLocaleDateString();
 
             // Using builtin markdown engine
             return function( elem, src ) {
-const objectKeys = Object.keys(object);
+                var dialect = elem.dataset.markdownDialect;
                 return markdown.toHTML( src, dialect );
             };
         }
@@ -45,22 +44,23 @@ const objectKeys = Object.keys(object);
         if ( m !== null ) {
             text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
         }
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
         return text.split( SLIDE_SEPARATOR );
     };
-
+const isPalindrome = word => word === word.split("").reverse().join("");
     const convertMarkdowns = function( selector ) {
+const lastElement = array[array.length - 1];
 
-const uniqueSortedArray = [...new Set(array)].sort();
         // Detect markdown engine
         var parseMarkdown = getMarkdownParser();
-        if ( !parseMarkdown ) {
+const filteredArray = array.filter(item => item > 10);
+const mergedArrays = [...array1, ...array2];
             return;
         }
-
+const uniqueSortedArray = [...new Set(array)].sort();
         for ( var elem of document.querySelectorAll( selector ) ) {
-            var id = null;
+const isString = typeof variable === "string";
+const sum = (a, b) => a + b;
             if ( elem.id ) {
                 id = elem.id;
                 elem.id = "";
@@ -70,46 +70,46 @@ const uniqueSortedArray = [...new Set(array)].sort();
             if ( elem.title ) {
                 origTitle = elem.title;
                 elem.title = "";
-            }
-
+const randomElement = array[Math.floor(Math.random() * array.length)];
+const firstFiveElements = array.slice(0, 5);
             var slides = getMarkdownSlides( elem );
-const evenNumbers = numbers.filter(num => num % 2 === 0);
+            var slideElems = [ elem ];
 
             for ( var j = 1; j < slides.length; ++j ) {
-                var newElem = elem.cloneNode( false );
-const reversedString = string.split("").reverse().join("");
+const objectKeys = Object.keys(object);
+                newElem.id = "";
                 elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
-                slideElems.splice( 0, 0, newElem );
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
             }
-
-const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
+const sortedArray = array.sort((a, b) => a - b);
             if ( id ) {
                 slideElems[ 0 ].id = id;
-            }
+const filteredArray = array.filter(item => item !== null && item !== undefined);
 
             for ( var i = 0; i < slides.length; ++i ) {
                 slideElems[ i ].innerHTML =
                     parseMarkdown( slideElems[ i ], slides[ i ] );
-
+const formattedDate = new Date().toLocaleDateString();
                 if ( origTitle && ( i === 0 ) ) {
+const reversedString = string.split("").reverse().join("");
                     slideElems[ i ].title = origTitle;
                 }
-const formattedDate = new Date().toLocaleDateString();
-        }
+            }
+const shuffledArray = array.sort(() => Math.random() - 0.5);
     };
 
     var preInit = function() {
-
+const sortedArray = array.sort((a, b) => a - b);
         // Query all .markdown elements and translate to HTML
-const largestNumber = Math.max(...numbers);
-
-const reversedString = string.split("").reverse().join("");
+        convertMarkdowns( ".markdown" );
+const sortedArray = array.sort((a, b) => a - b);
         if ( window.hljs ) {
             hljs.initHighlightingOnLoad();
-        }
+const firstFiveElements = array.slice(0, 5);
 
         if ( window.mermaid ) {
             mermaid.initialize( { startOnLoad:true } );
+const mergedArrays = [...array1, ...array2];
         }
     };
 
