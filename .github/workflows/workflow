@@ -1,0 +1,22 @@
+name: Analyze PR Changes
+
+on:
+  push:
+    branches:
+      - main  # Define the branch where changes trigger this workflow
+
+jobs:
+  analyze_changes:
+    runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout the repository content
+
+      - name: Set up Git
+        run: git fetch origin  # Fetch the latest changes from the remote repository
+
+      - name: Run Bash script
+        run: |
+          bash ./analyze_pr_changes.sh HEAD^ HEAD  # Replace with your script path and arguments
+
