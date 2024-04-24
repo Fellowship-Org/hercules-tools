@@ -2,6 +2,6 @@ vishwam talnikar 12345 chmod +x analyze_pr_changes.sh analyze_pr_changes.sh HEAD
 
 i change this fr checking this one and diff head git
 
-hello i am visz
+hello i am  tal
 
 chmod +x analyze_pr_changes.sh analyze_pr_changes.sh HEAD^ HEAD
