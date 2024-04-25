@@ -3,20 +3,22 @@ name: Analyze PR Changes
 on:
   push:
     branches:
-      - main  # Define the branch where changes trigger this workflow
+      - main  # Update to your main branch name
 
 jobs:
   analyze_changes:
-    runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  # Checkout the repository content
+        uses: actions/checkout@v2
 
       - name: Set up Git
-        run: git fetch origin  # Fetch the latest changes from the remote repository
-
-      - name: Run Bash script
         run: |
-          bash ./analyze_pr_changes.sh HEAD^ HEAD  # Replace with your script path and arguments
+          git config --global user.email "actions@example.com"
+          git config --global user.name "GitHub Actions"
 
+      - name: Run analysis script
+        run: |
+          chmod +x analyze_pr_changes.sh
+          ./analyze_pr_changes.sh HEAD^ HEAD
