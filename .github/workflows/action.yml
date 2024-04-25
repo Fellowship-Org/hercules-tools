@@ -1,0 +1,29 @@
+name: Git Operations
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2  # This action checks out your repository's code
+
+      - name: Install Git
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git
+          git --version  # Verify Git installation
+
+      - name: Make analyze_changes.sh executable
+        run: |
+          chmod +x analyze_changes.sh
+
+      - name: Run analyze_changes.sh script
+        run: |
+          ./analyze_changes.sh ${{ github.event.before }} ${{ github.sha }}
+
