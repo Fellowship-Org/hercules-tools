@@ -1,6 +1,6 @@
 #!/bin/bash
 
-analyse_pr_changes() {
+analyze_pr_changes() {
     local base_ref="$1"
     local head_ref="$2"
     
@@ -36,7 +36,7 @@ main() {
     
     git fetch origin
     
-    analyse_pr_changes "${base_ref}" "${head_ref}"
+    analyze_pr_changes "${base_ref}" "${head_ref}"
 }
 
 main "$@"
