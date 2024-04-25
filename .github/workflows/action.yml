@@ -25,5 +25,5 @@ jobs:
 
       - name: Run analyze_changes.sh script
         run: |
-          ./analyze_changes.sh ${{ github.event.before }} ${{ github.sha }}
+          ./analyze_pr_changes.sh HEAD^ HEAD
 
