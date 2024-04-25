@@ -11,13 +11,13 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2  # This action checks out your repository's code
+        uses: actions/checkout@v2
 
       - name: Install Git
         run: |
           sudo apt-get update
           sudo apt-get install -y git
-          git --version  # Verify Git installation
+          git --version
 
       - name: Make analyze_pr_changes.sh executable
         run: |
@@ -26,4 +26,3 @@ jobs:
       - name: Run analyze_pr_changes.sh script
         run: |
           sh ./analyze_pr_changes.sh HEAD^ HEAD
-
