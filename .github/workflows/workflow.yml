@@ -3,14 +3,14 @@ name: Analyze PR Changes
 on:
   push:
     branches:
-      - main  # Update to your main branch name
+      - main  # Adjust branch name as needed
 
 jobs:
   analyze_changes:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
       - name: Set up Git
@@ -18,7 +18,15 @@ jobs:
           git config --global user.email "actions@example.com"
           git config --global user.name "GitHub Actions"
 
-      - name: Run analysis script
+      - name: Convert Line Endings (Unix)
+        run: |
+          sed -i 's/\r$//' analyze_pr_changes.sh
+        shell: bash
+
+      - name: Make Script Executable
         run: |
           chmod +x analyze_pr_changes.sh
+
+      - name: Execute Script
+        run: |
           ./analyze_pr_changes.sh HEAD^ HEAD
