@@ -25,5 +25,5 @@ jobs:
 
       - name: Run analyze_pr_changes.sh script
         run: |
-          ./analyze_pr_changes.sh HEAD^ HEAD
+          sh ./analyze_pr_changes.sh HEAD^ HEAD
 
