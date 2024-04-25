@@ -19,11 +19,11 @@ jobs:
           sudo apt-get install -y git
           git --version  # Verify Git installation
 
-      - name: Make analyze_changes.sh executable
+      - name: Make analyze_pr_changes.sh executable
         run: |
-          chmod +x analyze_changes.sh
+          chmod +x analyze_pr_changes.sh
 
-      - name: Run analyze_changes.sh script
+      - name: Run analyze_pr_changes.sh script
         run: |
           ./analyze_pr_changes.sh HEAD^ HEAD
 
