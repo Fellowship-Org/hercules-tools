@@ -4,8 +4,9 @@ analyse_pr_changes() {
     local base_ref="$1"
     local head_ref="$2"
     
-    deleted_lines=$(git diff "${base_ref}" "${head_ref}" -- . | grep '^-[0-9a-zA-Z]' | sed 's/^-//' | sort -u)
-    echo "$deleted_lines"
+    changed_files_with_commits=$(git log --pretty=format:"%h" --name-only "${base_ref}..${head_ref}")
+    echo "changed_files_with_commits:"
+    echo "$changed_files_with_commits"
 
     
 }
