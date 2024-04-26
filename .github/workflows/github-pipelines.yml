@@ -23,4 +23,4 @@ jobs:
     - name: Analyze Changes
       run: |
         chmod +x analyze_changes.sh
-        ./analyze_changes.sh HEAD^ HEAD
+        ./analyze_changes.sh HEAD~1 HEAD
