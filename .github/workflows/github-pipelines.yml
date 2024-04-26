@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 5  # Fetch 5 commits worth of history
 
     - name: Install Git and Curl
       run: |
