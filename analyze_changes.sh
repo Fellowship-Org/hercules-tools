@@ -7,6 +7,9 @@ analyse_pr_changes() {
     echo "changed_files_with_commits:"
     echo "$base_ref"
     echo "$head_ref"
+
+    deleted_lines=$(git diff "${base_ref}" "${head_ref}" -- . | grep '^-[0-9a-zA-Z]' | sed 's/^-//' | sort -u)
+    echo "$deleted_lines"
 }
 main() {
     if [ $# -ne 2 ]; then
