@@ -10,6 +10,7 @@ analyse_pr_changes() {
         echo "Not a Git repository. Exiting."
         exit 1
     fi
+    git log
 }
 main() {
     if [ $# -ne 2 ]; then
