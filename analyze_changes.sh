@@ -21,8 +21,7 @@ analyse_pr_changes() {
     while IFS= read -r deleted_line; do
         # Use git blame to find the commit responsible for the deleted line
         blame_output=$(git blame "$commit" -- "$file" | grep "${deleted_line}" | awk '{print $1}')
-        full_commit_id=$(git rev-parse "${blame_output}")
-        echo "Deleted line '${deleted_line}' in commit ${full_commit_id}"
+        echo "Deleted line '${deleted_line}' in commit ${blame_output}"
     done
     # Loop over each deleted line
 }
