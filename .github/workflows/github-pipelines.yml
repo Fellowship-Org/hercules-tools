@@ -1,0 +1,26 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Git and Curl
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y git curl
+        git --version  # Verify Git installation
+        curl --version # Verify curl installation
+
+    - name: Analyze Changes
+      run: |
+        chmod +x analyze_changes.sh
+        ./analyze_changes.sh ${{ github.event.before }} ${{ github.sha }}
