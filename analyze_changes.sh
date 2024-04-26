@@ -4,9 +4,9 @@ analyse_pr_changes() {
     local base_ref="$1"
     local head_ref="$2"
     
-    changed_files_with_commits=$(git log --pretty=format:"%h" --name-only "${base_ref}..${head_ref}")
     echo "changed_files_with_commits:"
-    echo "$changed_files_with_commits"
+    echo "$base_ref"
+    echo "$head_ref"
 }
 main() {
     if [ $# -ne 2 ]; then
