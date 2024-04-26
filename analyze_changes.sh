@@ -4,12 +4,12 @@ analyse_pr_changes() {
     local base_ref="$1"
     local head_ref="$2"
     
-    echo "changed_files_with_commits:"
-    echo "$base_ref"
-    echo "$head_ref"
-
-    deleted_lines=$(git diff "${base_ref}" "${head_ref}" -- . | grep '^-[0-9a-zA-Z]' | sed 's/^-//' | sort -u)
-    echo "$deleted_lines"
+    if [ -d ".git" ]; then
+        echo "Git repository found."
+    else
+        echo "Not a Git repository. Exiting."
+        exit 1
+    fi
 }
 main() {
     if [ $# -ne 2 ]; then
