@@ -23,12 +23,25 @@ analyse_pr_changes() {
         blame_output=$(git blame "$commit" -- "$file" | grep "${deleted_line}" | awk '{print $1}')
         full_commit_id=$(git rev-parse "${blame_output}")
         echo "Deleted line '${deleted_line}' in commit ${full_commit_id}"
+        post_comment_to_bitbucket "Deleted line '${deleted_line}' in commit ${full_commit_id}"
     done
     # Loop over each deleted line
 }
+
+post_comment_to_bitbucket() {
+    local comment="$1"
+
+    curl -X POST \
+        -u "${BITBUCKET_USERNAME}:${BITBUCKET_APP_PASSWORD}" \
+        -H "Content-Type: application/json" \
+        -d "{\"content\": {\"raw\": \"${comment}\"}}" \
+        "https://api.bitbucket.org/2.0/repositories/${REPO_OWNER}/${REPO_SLUG}/pullrequests/${PR_ID}/comments"
+}
+
 main() {
     if [ $# -ne 2 ]; then
         echo "Usage: $0 <base_ref> <head_ref>"
+        exit 1
     fi
     
     base_ref="$1"
