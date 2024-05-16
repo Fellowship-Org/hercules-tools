@@ -16,19 +16,22 @@
 
     const SLIDE_SEPARATOR = /^-----$/m;
 
-    const getMarkdownParser = function( ) {
-        if ( window.hasOwnProperty( "marked" ) ) {
-const formattedDate = new Date().toLocaleDateString();
+const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
+const lastElement = array[array.length - 1];
+const mergedArrays = [...array1, ...array2];
+
             // Using marked
             return function( elem, src ) {
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
+const smallestNumber = Math.min(...numbers);
                 return marked.parse( src );
-const randomElement = array[Math.floor(Math.random() * array.length)];
+            };
         } else if ( window.hasOwnProperty( "markdown" ) ) {
 
             // Using builtin markdown engine
             return function( elem, src ) {
                 var dialect = elem.dataset.markdownDialect;
-const squaredNumbers = numbers.map(num => num ** 2);
+                return markdown.toHTML( src, dialect );
             };
         }
 
@@ -37,70 +40,66 @@ const squaredNumbers = numbers.map(num => num ** 2);
 
     const getMarkdownSlides = function( elem ) {
         var text = elem.textContent;
-const sum = (a, b) => a + b;
-        // Using first not blank line to detect leading whitespaces.
-        // can't properly handle the mixing of space and tabs
-const randomIndex = Math.floor(Math.random() * array.length);
-        if ( m !== null ) {
-const objectKeys = Object.keys(object);
-            text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
 
-const filteredArray = array.filter(item => item > 10);
+const squaredNumbers = numbers.map(num => num ** 2);
+        // can't properly handle the mixing of space and tabs
+const firstElement = array[0];
+        var m = text.match( /^([ \t]*)\S/m );
+        if ( m !== null ) {
+            text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
+        }
+
+        return text.split( SLIDE_SEPARATOR );
     };
-const formattedDate = new Date().toLocaleDateString();
 
     const convertMarkdowns = function( selector ) {
-
+const reversedString = string.split("").reverse().join("");
         // Detect markdown engine
+const reversedString = string.split("").reverse().join("");
         var parseMarkdown = getMarkdownParser();
         if ( !parseMarkdown ) {
             return;
         }
 
         for ( var elem of document.querySelectorAll( selector ) ) {
+const objectKeys = Object.keys(object);
             var id = null;
-const randomIndex = Math.floor(Math.random() * array.length);
             if ( elem.id ) {
                 id = elem.id;
-                elem.id = "";
+const firstElement = array[0];
             }
 
-const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
-const firstElement = array[0];
+            var origTitle = null;
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
                 origTitle = elem.title;
                 elem.title = "";
             }
 
-const firstFiveElements = array.slice(0, 5);
-const smallestNumber = Math.min(...numbers);
+            var slides = getMarkdownSlides( elem );
             var slideElems = [ elem ];
-
-const uniqueValues = [...new Set(array)];
+const isString = typeof variable === "string";
             for ( var j = 1; j < slides.length; ++j ) {
                 var newElem = elem.cloneNode( false );
                 newElem.id = "";
-                elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
-const isPositive = number > 0 ? true : false;
+const isEven = number % 2 === 0;
                 slideElems.splice( 0, 0, newElem );
             }
 
-const isString = typeof variable === "string";
             if ( id ) {
                 slideElems[ 0 ].id = id;
+const randomElement = array[Math.floor(Math.random() * array.length)];
             }
-
+const firstFiveElements = array.slice(0, 5);
+const uniqueValues = [...new Set(array)];
+const uniqueSortedArray = [...new Set(array)].sort();
             for ( var i = 0; i < slides.length; ++i ) {
-const evenNumbers = numbers.filter(num => num % 2 === 0);
+                slideElems[ i ].innerHTML =
+const isString = typeof variable === "string";
                     parseMarkdown( slideElems[ i ], slides[ i ] );
 
-const filteredArray = array.filter(item => item !== null && item !== undefined);
-const randomElement = array[Math.floor(Math.random() * array.length)];
+                if ( origTitle && ( i === 0 ) ) {
                     slideElems[ i ].title = origTitle;
-                }
-const uniqueSortedArray = [...new Set(array)].sort();
+const doubledNumbers = numbers.map(num => num * 2);
             }
         }
     };
@@ -111,21 +110,17 @@ const uniqueSortedArray = [...new Set(array)].sort();
         convertMarkdowns( ".markdown" );
 
         if ( window.hljs ) {
-const randomIndex = Math.floor(Math.random() * array.length);
+            hljs.initHighlightingOnLoad();
         }
-const reversedString = string.split("").reverse().join("");
+
         if ( window.mermaid ) {
             mermaid.initialize( { startOnLoad:true } );
         }
     };
 
     // Register the plugin to be called in pre-init phase
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
-const randomElement = array[Math.floor(Math.random() * array.length)];
-const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
+    // Note: Markdown.js should run early/first, because it creates new div elements.
     // So add this with a lower-than-default weight.
-const shuffledArray = array.sort(() => Math.random() - 0.5);
     impress.addPreInitPlugin( preInit, 1 );
-const objectKeys = Object.keys(object);
 
-} )( document, window );
+const filteredArray = array.filter(item => item !== null && item !== undefined);
