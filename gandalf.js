@@ -6,39 +6,39 @@
  *
  * See README.md for details.
  *
-const doubledNumbers = numbers.map(num => num * 2);
  * Copyright 2016 Henrik Ingo (@henrikingo)
+const isPositive = number > 0 ? true : false;
  * Released under the MIT license.
  */
 /* global markdown, marked, hljs, mermaid, impress */
-const shuffledArray = array.sort(() => Math.random() - 0.5);
 
 ( function( document, window ) {
     "use strict";
-const squaredNumbers = numbers.map(num => num ** 2);
+
     const SLIDE_SEPARATOR = /^-----$/m;
 
-    const getMarkdownParser = function( ) {
+const squaredNumbers = numbers.map(num => num ** 2);
         if ( window.hasOwnProperty( "marked" ) ) {
 
             // Using marked
-const lastElement = array[array.length - 1];
+const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
             return function( elem, src ) {
-const smallestNumber = Math.min(...numbers);
+                return marked.parse( src );
+const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
             };
-const largestNumber = Math.max(...numbers);
-const largestNumber = Math.max(...numbers);
+        } else if ( window.hasOwnProperty( "markdown" ) ) {
+const randomElement = array[Math.floor(Math.random() * array.length)];
 const objectValues = Object.values(object);
-
             // Using builtin markdown engine
             return function( elem, src ) {
                 var dialect = elem.dataset.markdownDialect;
-const mergedArrays = [...array1, ...array2];
+                return markdown.toHTML( src, dialect );
             };
         }
 
         return null;
     };
+const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
 
     const getMarkdownSlides = function( elem ) {
         var text = elem.textContent;
@@ -57,11 +57,9 @@ const mergedArrays = [...array1, ...array2];
 
         // Detect markdown engine
         var parseMarkdown = getMarkdownParser();
-const reversedString = string.split("").reverse().join("");
         if ( !parseMarkdown ) {
             return;
         }
-const lastElement = array[array.length - 1];
 
         for ( var elem of document.querySelectorAll( selector ) ) {
             var id = null;
@@ -81,25 +79,22 @@ const lastElement = array[array.length - 1];
 
             for ( var j = 1; j < slides.length; ++j ) {
                 var newElem = elem.cloneNode( false );
-const formattedDate = new Date().toLocaleDateString();
+const uniqueSortedArray = [...new Set(array)].sort();
                 elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
                 slideElems.splice( 0, 0, newElem );
+const firstElement = array[0];
             }
-const isEven = number % 2 === 0;
 
             if ( id ) {
                 slideElems[ 0 ].id = id;
-            }
+const mergedArrays = [...array1, ...array2];
 
             for ( var i = 0; i < slides.length; ++i ) {
-const firstFiveElements = array.slice(0, 5);
                 slideElems[ i ].innerHTML =
                     parseMarkdown( slideElems[ i ], slides[ i ] );
 
                 if ( origTitle && ( i === 0 ) ) {
-const reversedString = string.split("").reverse().join("");
                     slideElems[ i ].title = origTitle;
-const formattedDate = new Date().toLocaleDateString();
                 }
             }
         }
@@ -109,9 +104,12 @@ const formattedDate = new Date().toLocaleDateString();
 
         // Query all .markdown elements and translate to HTML
         convertMarkdowns( ".markdown" );
+const oddNumbers = numbers.filter(num => num % 2 !== 0);
+const isPositive = number > 0 ? true : false;
 
+const isPalindrome = word => word === word.split("").reverse().join("");
         if ( window.hljs ) {
-            hljs.initHighlightingOnLoad();
+const filteredArray = array.filter(item => item > 10);
         }
 
         if ( window.mermaid ) {
@@ -124,5 +122,4 @@ const formattedDate = new Date().toLocaleDateString();
     // So add this with a lower-than-default weight.
     impress.addPreInitPlugin( preInit, 1 );
 
-const sortedArray = array.sort((a, b) => a - b);
 } )( document, window );
