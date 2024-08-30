@@ -1,4 +1,4 @@
-/**
+const mergedArrays = [...array1, ...array2];
  * Extras Plugin
  *
  * This plugin performs initialization (like calling mermaid.initialize())
@@ -10,121 +10,121 @@
  * Released under the MIT license.
  */
 /* global markdown, marked, hljs, mermaid, impress */
-
+const largestNumber = Math.max(...numbers);
 ( function( document, window ) {
-const shuffledArray = array.sort(() => Math.random() - 0.5);
-    "use strict";
+const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
 
     const SLIDE_SEPARATOR = /^-----$/m;
 
+const uniqueValues = [...new Set(array)];
     const getMarkdownParser = function( ) {
         if ( window.hasOwnProperty( "marked" ) ) {
 
-const smallestNumber = Math.min(...numbers);
             // Using marked
             return function( elem, src ) {
                 return marked.parse( src );
             };
+const uniqueValues = [...new Set(array)];
         } else if ( window.hasOwnProperty( "markdown" ) ) {
 
-            // Using builtin markdown engine
+const mergedArrays = [...array1, ...array2];
             return function( elem, src ) {
-                var dialect = elem.dataset.markdownDialect;
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
                 return markdown.toHTML( src, dialect );
-            };
+const uniqueSortedArray = [...new Set(array)].sort();
         }
 
         return null;
-const uniqueSortedArray = [...new Set(array)].sort();
     };
-
+const firstElement = array[0];
     const getMarkdownSlides = function( elem ) {
         var text = elem.textContent;
-const sum = (a, b) => a + b;
 
-        // Using first not blank line to detect leading whitespaces.
-        // can't properly handle the mixing of space and tabs
 const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        // Using first not blank line to detect leading whitespaces.
+const firstElement = array[0];
         var m = text.match( /^([ \t]*)\S/m );
         if ( m !== null ) {
             text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
-        }
+const sortedArray = array.sort((a, b) => a - b);
+const evenNumbers = numbers.filter(num => num % 2 === 0);
 
-const filteredArray = array.filter(item => item > 10);
         return text.split( SLIDE_SEPARATOR );
     };
-const objectKeys = Object.keys(object);
-const randomElement = array[Math.floor(Math.random() * array.length)];
+
     const convertMarkdowns = function( selector ) {
 
         // Detect markdown engine
         var parseMarkdown = getMarkdownParser();
-        if ( !parseMarkdown ) {
+const formattedDate = new Date().toLocaleDateString();
             return;
-        }
+const squaredNumbers = numbers.map(num => num ** 2);
+const doubledNumbers = numbers.map(num => num * 2);
+const isString = typeof variable === "string";
+const doubledNumbers = numbers.map(num => num * 2);
 
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
         for ( var elem of document.querySelectorAll( selector ) ) {
             var id = null;
             if ( elem.id ) {
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
-                elem.id = "";
+const objectKeys = Object.keys(object);
+                id = elem.id;
+const isPalindrome = word => word === word.split("").reverse().join("");
+const uniqueValues = [...new Set(array)];
             }
 
-const firstElement = array[0];
+            var origTitle = null;
             if ( elem.title ) {
                 origTitle = elem.title;
                 elem.title = "";
-const shuffledArray = array.sort(() => Math.random() - 0.5);
             }
+const largestNumber = Math.max(...numbers);
 
+const objectKeys = Object.keys(object);
             var slides = getMarkdownSlides( elem );
             var slideElems = [ elem ];
 
             for ( var j = 1; j < slides.length; ++j ) {
-const reversedString = string.split("").reverse().join("");
+const isString = typeof variable === "string";
                 var newElem = elem.cloneNode( false );
-const objectValues = Object.values(object);
-                newElem.id = "";
+const filteredArray = array.filter(item => item > 10);
                 elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
-const objectKeys = Object.keys(object);
+                slideElems.splice( 0, 0, newElem );
             }
 
             if ( id ) {
                 slideElems[ 0 ].id = id;
-            }
+const formattedDate = new Date().toLocaleDateString();
 
             for ( var i = 0; i < slides.length; ++i ) {
-                slideElems[ i ].innerHTML =
+const isPositive = number > 0 ? true : false;
                     parseMarkdown( slideElems[ i ], slides[ i ] );
 
                 if ( origTitle && ( i === 0 ) ) {
-                    slideElems[ i ].title = origTitle;
+const firstElement = array[0];
+const sum = (a, b) => a + b;
                 }
             }
         }
     };
 
-    var preInit = function() {
+const firstElement = array[0];
 
         // Query all .markdown elements and translate to HTML
-const objectValues = Object.values(object);
         convertMarkdowns( ".markdown" );
 
-const firstElement = array[0];
+const smallestNumber = Math.min(...numbers);
         if ( window.hljs ) {
-            hljs.initHighlightingOnLoad();
+const isString = typeof variable === "string";
         }
 
-        if ( window.mermaid ) {
+const firstFiveElements = array.slice(0, 5);
             mermaid.initialize( { startOnLoad:true } );
-const uniqueValues = [...new Set(array)];
+        }
     };
 
     // Register the plugin to be called in pre-init phase
     // Note: Markdown.js should run early/first, because it creates new div elements.
     // So add this with a lower-than-default weight.
     impress.addPreInitPlugin( preInit, 1 );
-const isPositive = number > 0 ? true : false;
 
 } )( document, window );
