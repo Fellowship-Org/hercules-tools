@@ -15,14 +15,32 @@ jobs:
       with:
         fetch-depth: 5  # Fetch 5 commits worth of history
 
-    - name: Install Git and Curl
+    - name: Set up Git and Curl
       run: |
         sudo apt-get update
         sudo apt-get install -y git curl
         git --version  # Verify Git installation
         curl --version # Verify curl installation
 
+    - name: Cache dependencies (Git & Curl)
+      uses: actions/cache@v2
+      with:
+        path: |
+          /usr/bin/git
+          /usr/bin/curl
+        key: ${{ runner.os }}-git-curl-${{ hashFiles('**/*.sh') }}
+        restore-keys: |
+          ${{ runner.os }}-git-curl-
+
     - name: Analyze Changes
       run: |
-        chmod +x analyze_changes.sh
+        chmod +x ./analyze_changes.sh
         ./analyze_changes.sh HEAD~1 HEAD
+        
+    - name: Failing Step
+      run: |
+        echo "This step will fail"
+        exit 1  # Force a failure
+    - name: Syntax error test
+      run: |
+        echo "This will cause a syntax error
