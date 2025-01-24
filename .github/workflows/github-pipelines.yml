@@ -24,7 +24,7 @@ jobs:
         npm test  # Replace with the appropriate test command for your app
 
     - name: Simulate failure scenario
-      if: github.ref == 'refs/heads/test-failures'
+      if: github.ref == 'refs/heads/test-failure'
       run: |
         echo "Simulating build failure"
         exit 1
