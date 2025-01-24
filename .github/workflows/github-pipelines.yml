@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: App Test Pipeline
 
 on:
   push:
@@ -13,38 +13,23 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       with:
-        fetch-depth: 5  # Fetch 5 commits worth of history
+        fetch-depth: 5
 
-    - name: Set up Git and Curl
+    - name: Install dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y git curl
-        git --version  # Verify Git installation
-        curl --version # Verify curl installation
+        npm install  # Replace with appropriate dependency install command
 
-    - name: Cache dependencies (Git & Curl)
-      uses: actions/cache@v2
-      with:
-        path: |
-          /usr/bin/git
-          /usr/bin/curl
-        key: ${{ runner.os }}-git-curl-${{ hashFiles('**/*.sh') }}
-        restore-keys: |
-          ${{ runner.os }}-git-curl-
-
-    - name: Analyze Changes
+    - name: Run tests
       run: |
-        chmod +x ./analyze_changes.sh
-        ./analyze_changes.sh HEAD~1 HEAD
-        
-    - name: Test Pipeline Failure Handling
+        npm test  # Replace with the appropriate test command for your app
+
+    - name: Simulate failure scenario
       if: github.ref == 'refs/heads/test-failures'
       run: |
-        # Simulate a build failure for testing pipeline error handling
-        echo "Testing pipeline failure scenarios"
+        echo "Simulating build failure"
         exit 1
-    - name: Test Syntax Error Handling
+
+    - name: Simulate syntax error
       if: github.ref == 'refs/heads/test-failures'
       run: |
-        # Test how the pipeline handles syntax errors
-        bash -c 'echo "Testing syntax error handling"; ( syntax error here'
+        bash -c 'echo "Simulating syntax error"; ( syntax error here'
