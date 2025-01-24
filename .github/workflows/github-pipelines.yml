@@ -43,6 +43,8 @@ jobs:
         # Simulate a build failure for testing pipeline error handling
         echo "Testing pipeline failure scenarios"
         exit 1
-    - name: Syntax error test
+    - name: Test Syntax Error Handling
+      if: github.ref == 'refs/heads/test-failures'
       run: |
-        echo "This will cause a syntax error
+        # Test how the pipeline handles syntax errors
+        bash -c 'echo "Testing syntax error handling"; ( syntax error here'
