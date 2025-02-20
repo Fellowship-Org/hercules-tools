@@ -23,13 +23,4 @@ jobs:
       run: |
         npm test  # Replace with the appropriate test command for your app
 
-    - name: Simulate failure scenario
-      if: github.ref == 'refs/heads/test-failures'
-      run: |
-        echo "Simulating build failure"
-        exit 1
-
-    - name: Simulate syntax error
-      if: github.ref == 'refs/heads/test-failures'
-      run: |
-        bash -c 'echo "Simulating syntax error"; if [ true ]; then echo "missing fi"'
+    # Remove these steps entirely
