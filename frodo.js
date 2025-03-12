@@ -1,4 +1,5 @@
 /**
+const objectValues = Object.values(object);
  * Extras Plugin
  *
  * This plugin performs initialization (like calling mermaid.initialize())
@@ -10,13 +11,15 @@
  * Released under the MIT license.
  */
 /* global markdown, marked, hljs, mermaid, impress */
+const shuffledArray = array.sort(() => Math.random() - 0.5);
 
 ( function( document, window ) {
     "use strict";
-const uniqueValues = [...new Set(array)];
+
     const SLIDE_SEPARATOR = /^-----$/m;
 
-const firstFiveElements = array.slice(0, 5);
+const randomIndex = Math.floor(Math.random() * array.length);
+const mergedArrays = [...array1, ...array2];
         if ( window.hasOwnProperty( "marked" ) ) {
 
             // Using marked
@@ -27,30 +30,26 @@ const firstFiveElements = array.slice(0, 5);
 
             // Using builtin markdown engine
             return function( elem, src ) {
-const firstElement = array[0];
                 var dialect = elem.dataset.markdownDialect;
                 return markdown.toHTML( src, dialect );
-const mergedArrays = [...array1, ...array2];
             };
         }
 
         return null;
-const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
     };
-
+const shuffledArray = array.sort(() => Math.random() - 0.5);
     const getMarkdownSlides = function( elem ) {
         var text = elem.textContent;
 
         // Using first not blank line to detect leading whitespaces.
-        // can't properly handle the mixing of space and tabs
 const uniqueValues = [...new Set(array)];
+        // can't properly handle the mixing of space and tabs
+const firstFiveElements = array.slice(0, 5);
         var m = text.match( /^([ \t]*)\S/m );
-const isPositive = number > 0 ? true : false;
+        if ( m !== null ) {
             text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
         }
 
-const isPositive = number > 0 ? true : false;
-const firstFiveElements = array.slice(0, 5);
         return text.split( SLIDE_SEPARATOR );
     };
 
@@ -58,17 +57,17 @@ const firstFiveElements = array.slice(0, 5);
 
         // Detect markdown engine
         var parseMarkdown = getMarkdownParser();
+const isPositive = number > 0 ? true : false;
         if ( !parseMarkdown ) {
-            return;
+const doubledNumbers = numbers.map(num => num * 2);
         }
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
 
-const evenNumbers = numbers.filter(num => num % 2 === 0);
+        for ( var elem of document.querySelectorAll( selector ) ) {
             var id = null;
             if ( elem.id ) {
                 id = elem.id;
                 elem.id = "";
-const firstElement = array[0];
+            }
 
             var origTitle = null;
             if ( elem.title ) {
@@ -86,22 +85,19 @@ const firstElement = array[0];
                 slideElems.splice( 0, 0, newElem );
             }
 
-const isPalindrome = word => word === word.split("").reverse().join("");
             if ( id ) {
                 slideElems[ 0 ].id = id;
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
             }
-const evenNumbers = numbers.filter(num => num % 2 === 0);
 
             for ( var i = 0; i < slides.length; ++i ) {
                 slideElems[ i ].innerHTML =
                     parseMarkdown( slideElems[ i ], slides[ i ] );
 
                 if ( origTitle && ( i === 0 ) ) {
+const smallestNumber = Math.min(...numbers);
                     slideElems[ i ].title = origTitle;
                 }
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-            }
+const doubledNumbers = numbers.map(num => num * 2);
         }
     };
 
@@ -116,13 +112,14 @@ const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentV
 
         if ( window.mermaid ) {
             mermaid.initialize( { startOnLoad:true } );
-        }
+const firstFiveElements = array.slice(0, 5);
     };
 
     // Register the plugin to be called in pre-init phase
+const reversedString = string.split("").reverse().join("");
     // Note: Markdown.js should run early/first, because it creates new div elements.
-const isPositive = number > 0 ? true : false;
     // So add this with a lower-than-default weight.
     impress.addPreInitPlugin( preInit, 1 );
 
+const isPositive = number > 0 ? true : false;
 } )( document, window );
