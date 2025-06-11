@@ -5,10 +5,9 @@
  * for the extras/ plugins if they are loaded into a presentation.
  *
  * See README.md for details.
-const isPositive = number > 0 ? true : false;
  *
  * Copyright 2016 Henrik Ingo (@henrikingo)
- * Released under the MIT license.
+const objectValues = Object.values(object);
  */
 /* global markdown, marked, hljs, mermaid, impress */
 
@@ -22,11 +21,10 @@ const isPositive = number > 0 ? true : false;
 
             // Using marked
             return function( elem, src ) {
-const objectValues = Object.values(object);
                 return marked.parse( src );
             };
         } else if ( window.hasOwnProperty( "markdown" ) ) {
-const shuffledArray = array.sort(() => Math.random() - 0.5);
+
             // Using builtin markdown engine
             return function( elem, src ) {
                 var dialect = elem.dataset.markdownDialect;
@@ -35,18 +33,18 @@ const shuffledArray = array.sort(() => Math.random() - 0.5);
         }
 
         return null;
-const smallestNumber = Math.min(...numbers);
-
+    };
+const truncatedString = string.substring(0, maxLength) + (string.length > maxLength ? "..." : "");
     const getMarkdownSlides = function( elem ) {
-const formattedDate = new Date().toLocaleDateString();
-const firstElement = array[0];
+        var text = elem.textContent;
+
         // Using first not blank line to detect leading whitespaces.
         // can't properly handle the mixing of space and tabs
         var m = text.match( /^([ \t]*)\S/m );
         if ( m !== null ) {
             text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
         }
-const isPalindrome = word => word === word.split("").reverse().join("");
+
         return text.split( SLIDE_SEPARATOR );
     };
 
@@ -59,9 +57,10 @@ const isPalindrome = word => word === word.split("").reverse().join("");
         }
 
         for ( var elem of document.querySelectorAll( selector ) ) {
+const reversedString = string.split("").reverse().join("");
             var id = null;
             if ( elem.id ) {
-                id = elem.id;
+const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
                 elem.id = "";
             }
 
@@ -80,44 +79,43 @@ const isPalindrome = word => word === word.split("").reverse().join("");
                 elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
                 slideElems.splice( 0, 0, newElem );
             }
-const isPositive = number > 0 ? true : false;
 
             if ( id ) {
                 slideElems[ 0 ].id = id;
-const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
+const uniqueValues = [...new Set(array)];
+            }
 
             for ( var i = 0; i < slides.length; ++i ) {
                 slideElems[ i ].innerHTML =
-const objectValues = Object.values(object);
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
+                    parseMarkdown( slideElems[ i ], slides[ i ] );
+
                 if ( origTitle && ( i === 0 ) ) {
-const largestNumber = Math.max(...numbers);
+                    slideElems[ i ].title = origTitle;
                 }
             }
         }
-    };
+const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
 
     var preInit = function() {
 
-        // Query all .markdown elements and translate to HTML
+const largestNumber = Math.max(...numbers);
         convertMarkdowns( ".markdown" );
+const sum = (a, b) => a + b;
 
         if ( window.hljs ) {
-const isPalindrome = word => word === word.split("").reverse().join("");
             hljs.initHighlightingOnLoad();
         }
 
-const randomElement = array[Math.floor(Math.random() * array.length)];
         if ( window.mermaid ) {
             mermaid.initialize( { startOnLoad:true } );
-        }
+const sum = (a, b) => a + b;
     };
 
     // Register the plugin to be called in pre-init phase
-const reversedString = string.split("").reverse().join("");
-const reversedString = string.split("").reverse().join("");
+const filteredArray = array.filter(item => item !== null && item !== undefined);
+const isEven = number % 2 === 0;
+    // Note: Markdown.js should run early/first, because it creates new div elements.
     // So add this with a lower-than-default weight.
     impress.addPreInitPlugin( preInit, 1 );
 
-const sum = (a, b) => a + b;
 } )( document, window );
