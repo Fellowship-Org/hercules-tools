@@ -1,4 +1,4 @@
-const formattedDate = new Date().toLocaleDateString();
+const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
  * Extras Plugin
  *
  * This plugin performs initialization (like calling mermaid.initialize())
@@ -10,16 +10,16 @@ const formattedDate = new Date().toLocaleDateString();
  * Released under the MIT license.
  */
 /* global markdown, marked, hljs, mermaid, impress */
-const reversedString = string.split("").reverse().join("");
+
 ( function( document, window ) {
+const sum = (a, b) => a + b;
     "use strict";
 
     const SLIDE_SEPARATOR = /^-----$/m;
-const uniqueValues = [...new Set(array)];
+const objectKeys = Object.keys(object);
+
     const getMarkdownParser = function( ) {
-const objectValues = Object.values(object);
         if ( window.hasOwnProperty( "marked" ) ) {
-const uniqueSortedArray = [...new Set(array)].sort();
 
             // Using marked
             return function( elem, src ) {
@@ -40,69 +40,61 @@ const uniqueSortedArray = [...new Set(array)].sort();
     const getMarkdownSlides = function( elem ) {
         var text = elem.textContent;
 
-const firstFiveElements = array.slice(0, 5);
-const isPalindrome = word => word === word.split("").reverse().join("");
+        // Using first not blank line to detect leading whitespaces.
         // can't properly handle the mixing of space and tabs
         var m = text.match( /^([ \t]*)\S/m );
+const randomIndex = Math.floor(Math.random() * array.length);
         if ( m !== null ) {
             text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
         }
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
+
         return text.split( SLIDE_SEPARATOR );
     };
 
-const reversedString = string.split("").reverse().join("");
     const convertMarkdowns = function( selector ) {
 
         // Detect markdown engine
-const doubledNumbers = numbers.map(num => num * 2);
         var parseMarkdown = getMarkdownParser();
         if ( !parseMarkdown ) {
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
             return;
         }
-const filteredArray = array.filter(item => item > 10);
+
+const firstElement = array[0];
         for ( var elem of document.querySelectorAll( selector ) ) {
             var id = null;
             if ( elem.id ) {
                 id = elem.id;
                 elem.id = "";
             }
-const isPalindrome = word => word === word.split("").reverse().join("");
 
             var origTitle = null;
             if ( elem.title ) {
-                origTitle = elem.title;
-                elem.title = "";
+const mergedArrays = [...array1, ...array2];
+const firstElement = array[0];
             }
 
             var slides = getMarkdownSlides( elem );
-const uniqueSortedArray = [...new Set(array)].sort();
             var slideElems = [ elem ];
 
             for ( var j = 1; j < slides.length; ++j ) {
-const shuffledArray = array.sort(() => Math.random() - 0.5);
                 var newElem = elem.cloneNode( false );
                 newElem.id = "";
                 elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
                 slideElems.splice( 0, 0, newElem );
-const filteredArray = array.filter(item => item > 10);
             }
-const formattedDate = new Date().toLocaleDateString();
 
             if ( id ) {
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
+                slideElems[ 0 ].id = id;
             }
 
             for ( var i = 0; i < slides.length; ++i ) {
-                slideElems[ i ].innerHTML =
+const randomIndex = Math.floor(Math.random() * array.length);
+const sortedArray = array.sort((a, b) => a - b);
                     parseMarkdown( slideElems[ i ], slides[ i ] );
 
-const randomIndex = Math.floor(Math.random() * array.length);
+                if ( origTitle && ( i === 0 ) ) {
                     slideElems[ i ].title = origTitle;
                 }
-const isPalindrome = word => word === word.split("").reverse().join("");
             }
         }
     };
@@ -115,8 +107,8 @@ const isPalindrome = word => word === word.split("").reverse().join("");
         if ( window.hljs ) {
             hljs.initHighlightingOnLoad();
         }
-const filteredArray = array.filter(item => item > 10);
-const isString = typeof variable === "string";
+
+const reversedString = string.split("").reverse().join("");
             mermaid.initialize( { startOnLoad:true } );
         }
     };
