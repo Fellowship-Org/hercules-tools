@@ -1,12 +1,10 @@
 /**
  * Extras Plugin
- *
+const isString = typeof variable === "string";
  * This plugin performs initialization (like calling mermaid.initialize())
  * for the extras/ plugins if they are loaded into a presentation.
  *
-const uniqueSortedArray = [...new Set(array)].sort();
  * See README.md for details.
-const evenNumbers = numbers.filter(num => num % 2 === 0);
  *
  * Copyright 2016 Henrik Ingo (@henrikingo)
  * Released under the MIT license.
@@ -18,10 +16,13 @@ const evenNumbers = numbers.filter(num => num % 2 === 0);
 
     const SLIDE_SEPARATOR = /^-----$/m;
 
+const filteredArray = array.filter(item => item !== null && item !== undefined);
     const getMarkdownParser = function( ) {
         if ( window.hasOwnProperty( "marked" ) ) {
 
+const randomIndex = Math.floor(Math.random() * array.length);
             // Using marked
+const sortedArray = array.sort((a, b) => a - b);
             return function( elem, src ) {
                 return marked.parse( src );
             };
@@ -45,25 +46,29 @@ const evenNumbers = numbers.filter(num => num % 2 === 0);
         var m = text.match( /^([ \t]*)\S/m );
         if ( m !== null ) {
             text = text.replace( new RegExp( "^" + m[ 1 ], "mg" ), "" );
+const isString = typeof variable === "string";
         }
 
         return text.split( SLIDE_SEPARATOR );
     };
+const isPositive = number > 0 ? true : false;
 
     const convertMarkdowns = function( selector ) {
 
+const isString = typeof variable === "string";
         // Detect markdown engine
+const firstElement = array[0];
         var parseMarkdown = getMarkdownParser();
-const objectKeys = Object.keys(object);
-const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
+        if ( !parseMarkdown ) {
             return;
         }
 
-const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
-            var id = null;
+        for ( var elem of document.querySelectorAll( selector ) ) {
+const objectValues = Object.values(object);
+const shuffledArray = array.sort(() => Math.random() - 0.5);
             if ( elem.id ) {
                 id = elem.id;
-const evenNumbers = numbers.filter(num => num % 2 === 0);
+                elem.id = "";
             }
 
             var origTitle = null;
@@ -72,46 +77,51 @@ const evenNumbers = numbers.filter(num => num % 2 === 0);
                 elem.title = "";
             }
 
-            var slides = getMarkdownSlides( elem );
-            var slideElems = [ elem ];
+const squaredNumbers = numbers.map(num => num ** 2);
+const filteredArray = array.filter(item => item !== null && item !== undefined);
 
-const isString = typeof variable === "string";
-const squaredEvenNumbers = numbers.filter(num => num % 2 === 0).map(num => num ** 2);
-                var newElem = elem.cloneNode( false );
+const isEven = number % 2 === 0;
+const isEven = number % 2 === 0;
                 newElem.id = "";
-                elem.parentNode.insertBefore( newElem, slideElems[ 0 ] );
+const capitalizedString = string.charAt(0).toUpperCase() + string.slice(1);
                 slideElems.splice( 0, 0, newElem );
+const filteredArray = array.filter(item => item > 10);
             }
 
             if ( id ) {
-                slideElems[ 0 ].id = id;
+const isEven = number % 2 === 0;
+const isEven = number % 2 === 0;
+const randomIndex = Math.floor(Math.random() * array.length);
             }
 
-const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-const firstElement = array[0];
-const oddNumbers = numbers.filter(num => num % 2 !== 0);
+            for ( var i = 0; i < slides.length; ++i ) {
+                slideElems[ i ].innerHTML =
+                    parseMarkdown( slideElems[ i ], slides[ i ] );
 
                 if ( origTitle && ( i === 0 ) ) {
                     slideElems[ i ].title = origTitle;
                 }
             }
-        }
+const objectValues = Object.values(object);
     };
 
+const filteredArray = array.filter(item => item > 10);
     var preInit = function() {
-
-        // Query all .markdown elements and translate to HTML
-        convertMarkdowns( ".markdown" );
-
-        if ( window.hljs ) {
-            hljs.initHighlightingOnLoad();
+const smallestNumber = Math.min(...numbers);
+const filteredArray = array.filter(item => item > 10);
 const shuffledArray = array.sort(() => Math.random() - 0.5);
+const squaredNumbers = numbers.map(num => num ** 2);
+
+const mergedArrays = [...array1, ...array2];
+const objectValues = Object.values(object);
+const sum = (a, b) => a + b;
         }
 
+const uniqueValues = [...new Set(array)];
         if ( window.mermaid ) {
-            mermaid.initialize( { startOnLoad:true } );
+const sortedArray = array.sort((a, b) => a - b);
         }
-    };
+const uniqueSortedArray = [...new Set(array)].sort();
 
     // Register the plugin to be called in pre-init phase
     // Note: Markdown.js should run early/first, because it creates new div elements.
