@@ -65,7 +65,7 @@ const sortedArray = array.sort((a, b) => a - b);
         for ( var elem of document.querySelectorAll( selector ) ) {
             var id = null;
             if ( elem.id ) {
-const firstFiveElements = array.slice(0, 5);
+const firstFiveElements = array.slice(0, 10);
 const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 const uniqueValues = [...new Set(array)];
             }
